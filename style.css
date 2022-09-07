@@ -1,0 +1,296 @@
+body {
+	margin: 0;
+}
+
+
+
+.wrapper {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+		
+	
+}
+.wrapper-vipichka {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	align-items: flex-start;
+	margin: 1vh 1vw 1vh 1vw;
+	
+	
+}
+
+.wrapper-button {
+	position:  relative;	
+	display: flex;
+	wrap:  no-wrap;	
+	height: ;
+}
+
+.button {
+	width: 23vw;
+	height: 8vh;
+	font-size: 3.5vw;
+	line-height: 8vh;
+	margin: 1vh auto;
+	text-align: center;
+}
+.restart {
+	
+	background: red;
+}
+
+.global-stat {
+	background: #FFB4B4;
+}
+
+#glob-statMod{
+	position: fixed;
+	display: block;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	background: #D2D2D2;
+	padding: 1%;
+	font-size: 3vh;
+	z-index: 9999;
+}
+
+#glob-statMod.close {
+	display: none;
+}
+
+.statistic {
+	background: green;	
+}
+
+.zakupka {
+	
+	background: #C7C7FF;
+}
+
+.nav-button {
+	border: 1px solid black;
+	background: #E1D7D7;
+}
+
+.cur-page {
+	background: #FAC6C6;
+}
+
+#statMod{
+	position: fixed;
+	display: block;
+	top: 5%;
+	left: 5%;
+	width: 80%;
+	height: 80%;
+	background: #D2D2D2;
+	padding: 5%;
+	font-size: 3vh;
+	z-index: 9999;
+}
+
+#statMod.close {
+	display: none;
+}
+
+#zakupka-wrapper {
+	position: fixed;
+	display: block;
+	top: 5%;
+	left: 5%;
+	width: 80%;
+	height: 80%;
+	background: #D2D2D2;
+	padding: 5%;
+	font-size: 3vh;
+	overflow: auto;
+}
+
+#zakupka-wrapper.close {
+	display: none;
+}
+
+.zakupka-header {
+	display: flex;
+	justify-content: space-between;
+	height: 5vh;
+}
+
+.h1-div {
+	font-size: 4vh;
+	font-weight: bold;
+	height: 100%;
+}
+
+.zakupka-button {
+	font-size: 3vh;
+	height: 5vh;
+}
+
+#copy.click {
+	background: red;
+}
+
+
+@media all and (orientation:portrait) { 	/* стили для портрета */
+	.el {
+		width: 24%;
+		height: 18vh;
+	}
+
+	.name {
+		line-height: 4vh;
+		font-size: 5vw;
+		height: 4vh;
+	}
+
+	.counter {
+		width: 100%;
+		height: 10vh;
+		line-height: 10vh;
+		position: relative;
+		font-size: 10vh;
+		margin-bottom: 0.5vh;
+	}
+
+	.plus {
+		position: relative;
+		height: 4vh;
+		font-size: 4vh;
+		line-height: 4vh;	
+	}
+
+	.minus {
+		position: relative;
+		height: 4vh;
+		font-size: 4vh;
+		line-height: 4vh;
+	}
+
+}
+
+@media all and (orientation:landscape) {     /* стили для пейзажа */
+	.el {
+		width: 19%;
+		height: 23vh;
+	}
+
+	.name {
+		line-height: 4vh;
+		font-size: 4vh;
+		height: 4vh;
+	}
+
+	.counter {
+		width: 100%;
+		height: 14vh;
+		line-height: 14vh;
+		position: relative;
+		font-size: 12vh;
+		margin-bottom: 0.5vh;
+	}
+
+	.plus {
+		position: relative;
+		height: 5vh;
+		font-size: 5vh;
+		line-height: 5vh;	
+	}
+
+	.minus {
+		position: relative;
+		height: 5vh;
+		font-size: 5vh;
+		line-height: 5vh;
+	}
+
+}
+
+
+
+.el {
+	background: yellow;
+	text-align: center;
+	margin: 0.5%;
+	border: 0px solid black;
+}
+
+.name {
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+.counter {
+	width: 100%;
+	position: relative;
+	margin-bottom: 0.5vh;
+}
+
+.plusWrapper {
+	display: flex;
+
+}
+
+.plus {
+	position: relative;
+	width: 50%;
+	background: red;
+	
+}
+
+.minus {
+	position: relative;
+	width: 50%;
+	background: green;
+}
+
+.no-click {
+	pointer-events: none;
+}
+
+.min, .pl, .count-field {
+	display: inline-block;
+	background: grey;
+	line-height: 3vh;
+	font-size: 3vh;
+	text-align: center;
+	height: 4vh;
+	width: 4vh;
+}
+
+
+.list {
+	width: 80%;
+}
+
+.list-li {
+	display: flex;
+	justify-content: space-between ;
+}
+
+
+.checkbox {
+	width: 3vh;
+	height: 3vh;
+}
+
+table {
+	border: 1px solid black;
+	font-size: 4vh;
+}
+
+td:first-child {
+	font-weight: bold;
+	text-align: left;
+}
+
+td {
+	text-align: center;
+}
