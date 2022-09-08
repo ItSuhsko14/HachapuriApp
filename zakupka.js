@@ -8,8 +8,8 @@ let zakupkaList = [
 	{name: "Яловичина", type: "counted", curValue: 5, unit: "кг"},
 	{name: "Фарш курячий", type: "counted", curValue: 3, unit: "кг"},
 	{name: "Філе куряче", type: "counted", curValue: 2, unit: "шт."},
-	{name: "Ошийок", type: "counted", curValue: 3, unit: "кг"},
-	{name: "Фарш свин.", type: "counted", curValue: 3, unit: "кг"},
+	{name: "Ошийок", type: "not counted", checked: false},
+	{name: "Фарш свин.", type: "not counted", checked: false},
 	{name: "Кінза", type: "not counted", checked: true},
 	{name: "Зелена цибул", type: "not counted", checked: true},
 	{name: "Гриби", type: "not counted", checked: true},
@@ -42,28 +42,6 @@ let zakupkaList = [
 	{name: "Яйця", type: "not counted", checked: false},
 
 ];
-
-console.log(zakupkaList);
-
-async function getZakupkaList() {
-	console.log("-- Функція getZakupkaList почала працювати");
-	let url = 'zakupka-data.json';
-	let response = await fetch(url);
-
-	console.log(response);
-
-	zakupkaList = await response.json(); // читаем ответ в формате JSON
-	text = JSON.stringify(zakupkaList);
-	
-	console.log(text);
-	console.log(zakupkaList);
-	console.log(typeof zakupkaList);
-
-}
-
-getZakupkaList();
-
-
 
 
 
@@ -209,44 +187,42 @@ zakupkaClose.addEventListener('click', function(event) {
 	zakupkaWrapper.classList.toggle("close");
 })
 
-// відкриваємо редагування
-let zakupkaRedact = document.getElementById("redact");
-console.log(zakupkaRedact);
-zakupkaRedact.addEventListener('click', function(event) {
-createZakupkaRedact()
-})
+
 
 
 // копіюємо дані закупки
 let copy = document.getElementById("copy");
+
 copy.addEventListener('click', function(e) {
-	
-let copyStr = "";
-let i = 0;
-	for (child of list.children) {
+	console.log("-- Функція копіювати закупку");
+	let list = document.querySelector(".list");
+	let copyStr = "";
+	let i = 0;
+	console.log(list);
+		for (child of list.children) {
 
-		if (child.id === "counter") {
-			console.log(zakupkaList[i].unit);
-			copyStr = copyStr + child.children[0].innerText + " ";
-			copyStr = copyStr + child.children[1].children[1].value + zakupkaList[i].unit+"\n";
-		} else if (child.children[1].children[0].checked) {
-			copyStr = copyStr + child.children[0].innerText +"\n";
-		}
-		i++	
-	};
-	console.log(copyStr);
+			if (child.id === "counter") {
+				console.log(zakupkaList[i].unit);
+				copyStr = copyStr + child.children[0].innerText + " ";
+				copyStr = copyStr + child.children[1].children[1].value + zakupkaList[i].unit+"\n";
+			} else if (child.children[1].children[0].checked) {
+				copyStr = copyStr + child.children[0].innerText +"\n";
+			}
+			i++	
+		};
+		console.log(copyStr);
 
-	//створюю місце для текста, виділяю, копіюю
-	const el = document.createElement("textarea");
-	el.value = copyStr;
-	el.setAttribute('readonly', '');
-	el.style.position = 'absolute';
-	el.style.left = '-9999px';
-	document.body.appendChild(el);
-	el.select();
-	document.execCommand('copy');
-	document.body.removeChild(el);
-	clickButton();
+		//створюю місце для текста, виділяю, копіюю
+		const el = document.createElement("textarea");
+		el.value = copyStr;
+		el.setAttribute('readonly', '');
+		el.style.position = 'absolute';
+		el.style.left = '-9999px';
+		document.body.appendChild(el);
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
+		clickButton();
 });
 
 // counter

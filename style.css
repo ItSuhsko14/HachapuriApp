@@ -52,10 +52,10 @@ body {
 	display: block;
 	top: 5%;
 	left: 5%;
-	width: 90%;
-	height: 90%;
+	width: 80%;
+	height: 80%;
 	background: #D2D2D2;
-	padding: 1%;
+	padding: 5%;
 	font-size: 3vh;
 	z-index: 9999;
 }

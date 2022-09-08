@@ -7,9 +7,7 @@ let curPageCount = document.querySelector('.cur-page');
 let lastIndex;
 let nextIndex;
 let curIndex;
-console.log("поточна дата: " + getCurDate());
-console.log(bigCountData);
-
+let countNull = {};
 
 let countData = { 
 	"kubdari": {
@@ -67,7 +65,7 @@ let countData = {
 		"price": 3.5,
 	},
 	"shoco": {
-		"name": "Шоколад",
+		"name": "Абрикос",
 		"number": 8,
 		"type": 2,
 		"price": 3.5,
@@ -90,10 +88,31 @@ let countData = {
 		"type": 2,
 		"price": 3.5,
 	},
+	"adjar": {
+		"name": "Аджар.",
+		"number": 1,
+		"type": 2,
+		"price": 3.5,
+	},
 	};
 
-// створюємо нульовий Count
-let countNull = {};
+
+// завантажуємо count з LocalStorage
+function downloadCount() {
+	console.log("-- Функція downloadCount");
+	if ( localStorage.getItem("data") != null ) {
+		console.log("count існує в localStorage");
+		count = JSON.parse( localStorage.getItem("data") );
+		console.log("count завантажено з LocalStorage");
+	} else {
+		console.log("count не існує в localStorage");
+		count = createCountNull();
+		console.log("count = ");
+		console.log(count);
+	}
+}
+
+downloadCount();
 
 function createCountNull() {
 	console.log("-- Функція createCountNull --");
@@ -105,159 +124,32 @@ function createCountNull() {
 	return countNull;
 }
 
-
 // скидаємо данні сторінки
 restart.addEventListener('click', function clearCount() {
 	console.log("-- Функція clearCount --");
 	localStorage.removeItem("data");
 	console.log("Видалено data З LocalStorage");
-	localStorage.removeItem("bigData");
-	console.log("Видалено bigData з LocalStorage");
-	bigCountData[curIndex].count = createCountNull();
+	
+	
 	console.log("Поточні значення:");
-	console.log(bigCountData);
+	count = createCountNull();
 	countText = JSON.stringify( count );
 	localStorage.setItem( "data", countText );
 	console.log("Завантажено count у LocalStorage");
-	countText = JSON.stringify( bigCountData );
-	localStorage.setItem( "data", countText );
-	console.log("Завантажено bigCountData у LocalStorage");
+	
+	
+	
 	location.reload();
 	console.log("Сторінку перезавантажено");
 });
 
-// перевіряємо наявність bigCountData в LocalStorage
-function isBigCountDataInStorage() {
-	console.log("Функція isBigCountDataInStorage перевіряє наявність даних в LocalStorage.");
-	if ( localStorage.getItem("bigData") != null ) {
-		console.log("bigdata існує в localStorage");
-	} else {
-		console.log("bigdata немає в localStorage");
-		console.log("Запускаємо функцію createElementInBigCountData");
-		createElementInBigCountData(0);
-	}
-}
 
 
-// заванажуємо данні bigDataCount з LocalStorage
-function downloadBigData() {
-	console.log("-- Функція downloadBigData завантажує данні з LocalStorage");
-	if (localStorage.getItem("bigData") !== null) {
-		bigCountData = JSON.parse( localStorage.getItem("bigData") );
-		console.log("bigCountData завантажено з LocalStorage");
-	} else {
-		console.log("bigCountData не існує в localStorage");
-		createElementInBigCountData(0);
-
-	}
-}
-downloadBigData();
-
-lastIndex = Object.keys(bigCountData).length-1; //кількість сторінок
-console.log("останній індекс:" + lastIndex);
-
-// отримуємо данні сторінки на поточну дату
-let curPage;
-function getCurPage() {
-	console.log("-- Функція getCurPage --");
-	for (let ind in bigCountData) {
-		if (bigCountData[ind].date == getCurDate() ) {
-			curIndex = ind;
-			console.log(curIndex);
-			curPage = bigCountData[ind];
-			console.log("Поточна дата " + getCurDate());
-			console.log("Індекс поточної сторінки " + curIndex);
-			console.log("Данні поточної сторінки: ");
-			console.log(curPage);
-			return curPage
-		} else {
-			console.log("Поточної дати не існує в bigCountData, тому створюємо елемент з поточною датою");
-			console.log(lastIndex);
-			createElementInBigCountData(lastIndex + 1);
-		}
-	}
-}
-
-getCurPage();
-
-
-
-/*function getCurIndex() {
-	console.log("функція getCurIndex");
-	if (bigCountData[lastIndex].date !== getCurDate()) { 
-		console.log(bigCountData[lastIndex].date + " не дорівнює " + getCurDate());
-		if ( isCurDateInBigCountData() ) {
-			for (let ind in bigCountData) {
-				if (bigCountData[ind] == getCurDate()) {
-					console.log( bigCountData[ind] +" дорівнює "+ getCurDate() );
-					curIndex = ind;
-					console.log("curIndex = " + curIndex);
-				};
-				console.log(ind + " " + bigCountData[ind].date);
-			}
-		} else {
-			console.log("створюємо сторінку для поточної дати функцією createCurDateElement");
-			createCurDateElement();
-		}
-		console.log("поточний індекс є останнім");
-		console.log(getCurDate());
-	} else {
-		console.log("поточна дата співпадає з поточною сторінкою");
-	}
-}
-
-getCurIndex(); */
-
-function createCurDateElement() {
-	console.log("-- Функція createCurDateElement --");
-	console.log("Створюється новий елемент bigCountData");
-	console.log("bigCountData[0] = " + bigCountData[0]);
-	if (bigCountData[0] !== undefined ) {
-		lastIndex = bigCountData.length;
-		console.log("bigCountData вже існує і lastIndex = " + lastIndex);
-	} else {
-		lastIndex = 0;
-		console.log("bigCountData не існувало, тому lastIndex = 0");
-	}
-	createElementInBigCountData(lastIndex)
-	console.log("lastIndex = " + lastIndex);
-	console.log("створено елемент з поточною датою");
-	console.log(bigCountData[lastIndex]);
-}
-
-function createElementInBigCountData(index) {
-	console.log("-- функція createElementInBigCountData --");
-	bigCountData[index] = {};
-	bigCountData[index].date = getCurDate();
-	bigCountData[index].count = createCountNull();
-	curIndex = index;
-	console.log("Елемент з індексом " + index + " створено. Ось він ");
-	console.log(bigCountData[index]);
-	
-}
-
-function isCurDateInBigCountData() {
-	console.log("-- Функція isCurDateInBigCountData");
-	for (let ind in bigCountData) {
-		if (bigCountData[ind].date == getCurDate()) {
-			console.log("isCurDateInBigCountData() говорить, що елемент з такою датою існує");
-			return true;
-		}
-		console.log("isCurDateInBigCountData() говорить, що елемента з такою датою немає");
-		return false;
-	}
-}
-
-
-count = bigCountData[curIndex];
-console.log(count);
 
 // створюєм html основних кнопок
 let counterDiv;
 function createButoons() {
 	console.log("-- Функція createButoons --");
-	console.log(lastIndex);
-	let count = bigCountData[curIndex].count; 	
 	for (key in count) {		
 		let div = document.createElement('div');
 		let nameDiv = document.createElement('div');
@@ -285,7 +177,6 @@ function createButoons() {
 		counterDiv.innerHTML = count[key];
 		plus.innerHTML = "+";
 		minus.innerHTML = "-";
-		curPageCount.innerHTML = bigCountData[curIndex].date;
 	}
 };
 
@@ -309,98 +200,12 @@ function regenButtons() {
 	}
 };
 
-// рахуємо попередню дату
-function getPrevDate() {
-	let string = bigCountData[curIndex+1].date;
-	console.log(string);
-	let arr = string.split('.');
-	console.log(arr);
-	arr[0]--;
-	let str = arr.join('.');
-	console.log(str);
-	return str;
-};
 
-// рахуємо наступну дату
-function getNextDate() {
-	console.log("-- Функція getNextDate");
-	let string = bigCountData[curIndex-1].date;
-	console.log(string);
-	let arr = string.split('.');
-	console.log(arr);
-	arr[0]++;
-	let str = arr.join('.');
-	console.log(str);
-	return str;
-};
-
-// створюємо попередню сторінку
-function createPrevPage() {
-	console.log("-- Функція createPrevPage --");
-	if (curIndex > 0) {
-		bigCountData[curIndex] = {};
-		bigCountData[curIndex].date = getPrevDate();
-		bigCountData[curIndex].count = countNull;
-		console.log("createPrevPage запущено");
-	}
-}
-
-// створюємо наступну сторінку
-function createNextPage() {
-	console.log("-- Функція createNextPage --");
-	bigCountData[curIndex] = {};
-	bigCountData[curIndex].date = getNextDate();
-	bigCountData[curIndex].count = countNull;
-	console.log("createNextPage запущено");
-}
-
-// перейти на попередню сторінку
-function getPrevPage() {
-	console.log("-- Функція getPrevPage --");
-	curIndex--;
-	if ( bigCountData[curIndex] === undefined ) {
-		console.log("такої сторінки не існує, створюємо її");
-		createPrevPage();
-		regenButtons();
-	} else {
-		count = bigCountData[curIndex].count;
-		regenButtons();
-		console.log("поточні данні -");
-		console.log(bigCountData[curIndex]);
-	};
-}
-
-// перейти на наступну сторінку
-function getNextPage() {
-	console.log("-- Функція getNextPage --");
-	curIndex++;
-	if ( bigCountData[curIndex] === undefined ) {
-		console.log("такої сторінки не існує, створюємо її");
-		createNextPage();
-		regenButtons();
-	} else {
-		count = bigCountData[curIndex].count;
-		regenButtons();
-		console.log("curIndex = "+ curIndex);
-		console.log("поточні данні:");
-		console.log(bigCountData[curIndex]);
-	};
-};
-
-// натискання кнопок вперед і назад
-let prevPage = document.getElementById('prev-page');
-let nextPage = document.getElementById('next-page');
-
-prevPage.addEventListener('click', getPrevPage);
-nextPage.addEventListener('click', getNextPage);
 
 countButtons = document.querySelectorAll(".counter");
 
 let target = "";
 let childrens = "";
-
-
-
 
 // завантажити count в LocalStorage
 function saveCountInLocalStorage() {
@@ -410,19 +215,9 @@ function saveCountInLocalStorage() {
 	console.log("count завантажено в Local storage");
 }
 
-// завантажуємо bigCountData в LocalStorage
-function saveBigCountDataInLocalStorage() {
-	console.log("-- Функція saveBigCountDataInLocalStorage --");
-	countText = JSON.stringify( bigCountData );
-	localStorage.setItem("bigData", countText);
-	console.log("bigCountData завантажено в localStorage");
-};
-
-
 // обробка кліка по документу
 document.addEventListener('click', function(event) {
     console.log("-- Клик на документ --");
-    console.log(event.target.dataset);
     if (event.target.dataset.counter != undefined) { // если есть атрибут...
       console.log("Нажато" + event.target);
       console.log("Значення " + event.target + " - " + event.target.value);
@@ -437,30 +232,26 @@ document.addEventListener('click', function(event) {
 
 		case "counter":
 			console.log("Нажато Counter");
-			console.log("countData[curId].number");
-			console.log(countData[curId].number);
-			console.log("curIndex = " + curIndex);
-			console.log("bigCountData[curIndex].count[curId]");
-			console.log(bigCountData[curIndex].count[curId]);
-			bigCountData[curIndex].count[curId] = bigCountData[curIndex].count[curId] + countData[curId].number;
-			console.log("countData[curId].number");
-			console.log(countData[curId].number);
-			console.log("bigCountData[curIndex].count[curId]");
-			console.log(bigCountData[curIndex].count[curId]);
-			target.innerHTML = bigCountData[curIndex].count[curId];
-			console.log(target);
+			console.log(target.id);
+			count[target.id] = count[target.id] + countData[target.id].number;
+			console.log("count[target.id]");
+			console.log(count[target.id]);
+			target.innerHTML = count[target.id];
+			saveCountInLocalStorage();
 		break;
 
 		case "plus":
 			console.log("Нажато +");
-			bigCountData[curIndex].count[curId]++;
-			target.parentNode.previousSibling.innerHTML = bigCountData[curIndex].count[curId];
+			count[curId]++;
+			target.parentNode.previousSibling.innerHTML = count[curId];
+			saveCountInLocalStorage();
 		break;
 
 		case "minus":
 			console.log("Нажато -");
-			bigCountData[curIndex].count[curId]--;
-			target.parentNode.previousSibling.innerHTML = bigCountData[curIndex].count[curId];
+			count[curId]--;
+			target.parentNode.previousSibling.innerHTML = count[curId];
+			saveCountInLocalStorage();
 		break;
 	}
 			
@@ -486,7 +277,6 @@ document.addEventListener('click', function(event) {
 		  drigValue.children[0].innerHTML = drigVal;
 		  listValue.children[0].innerHTML = listVal;
 		  totalValue.children[0].innerHTML = totalVal;
-		  totalSir.children[0].innerHTML = sir;
 		console.log(totalSum);
 	}
 
@@ -500,9 +290,9 @@ document.addEventListener('click', function(event) {
 		zakupkaWrapper.classList.toggle("close");
 	}
 
-	saveCountInLocalStorage();
+	
 
-	saveBigCountDataInLocalStorage();
+	
 	
   });
 
@@ -530,6 +320,9 @@ function clearStatistic() {
 
 // рахую статистику
 function totalCount() {
+	console.log(' -- Функція підрахунку статистики');
+	console.log(count);
+	console.log(countData);
 	for ( key in count ) {
 		console.log(key + " " + count[key]);
 		totalSum = totalSum + count[key];
@@ -544,112 +337,22 @@ function totalCount() {
 		drigVal = drigSum*3;
 		listVal = listSum*3.5;
 		totalVal = drigVal + listVal;
-		
+		console.log(drigVal);
+		console.log(listVal);
+		console.log(totalVal);
 	}
 	return totalSum;
 }  
 
-
-// масив змінних
-let countIngridients = {
-	farshFarsh: {
-		container: "farsh",
-		mass: 0.1,
-		value: 0
-	},
-	fylePetuchinia: {
-		container: "petuchinia",
-		mass: 0.1,
-		value: 0
-	},
-	svinKubd: {
-		container: "kubdari",
-		mass: 0.14,
-		value: 0
-	},
-	svinMyaso: {
-		container: "miaso",
-		mass: 0.1,
-		value: 0
-	},
-	svinGemr: {
-		container: "gemrieli",
-		mass: 0.1,
-		value: 0
-	},
-	telyatDjirg: {
-		container: "djigruli",
-		mass: 0.1,
-		value: 0
-	},
-	telyatSumahi: {
-		container: "sumahi",
-		mass: 0.1,
-		value: 0
-	},
-	sirHachapuri: {
-		container: "hachapuri",
-		mass: 0.13,
-		value: 0
-	},
-	sirMyaso: {
-		container: "miaso",
-		mass: 0.06,
-		value: 0
-	},
-	sirSir: {
-		container: "sir",
-		mass: 0.1,
-		value: 0
-	},
-	sirFarsh: {
-		container: "farsh",
-		mass: 0.06,
-		value: 0
-	}
-};
-
-console.log(countIngridients);
-
-// рахую використан інгридієнти
-function usedIngredients() {
-	console.log("-- Функція розрахунку інгридієнтів");
-	count = bigCountData[curIndex];
-	const dataIngrigients = count.count;
-	for (key in countIngridients) {
-		let name = countIngridients[key].container;
-		countIngridients[key].value = dataIngrigients[name] * countIngridients[key].mass;
-		console.log(	key +" = " + countIngridients[key].value);
-	};
-														
-						
-	let sir = countIngridients["sirHachapuri"].value + countIngridients["sirFarsh"].value + countIngridients["sirSir"].value + countIngridients["sirMyaso"].value;
-	let svin = countIngridients["svinGemr"].value + countIngridients["svinKubd"].value;
-	let telyat = countIngridients["telyatDjirg"].value + countIngridients["telyatSumahi"].value;
-	let farsh = countIngridients["farshFarsh"].value;
-	let fyle = countIngridients["fylePetuchinia"];
-
-	console.log("sir="+sir);
-		console.log("svin="+svin);
-		console.log("telyat="+telyat);
-		console.log("farsh="+farsh);
-	};
-
-usedIngredients();
-
-
-
 let list = document.querySelector(".list")
 
 
-// індикація натискання кнопки
+// індикація натискання кнопки copy
 function clickButton() {
 	copy.classList.add("click");
 	setTimeout( function() {
 		copy.classList.remove("click");	
 	}, 500);
-
-	
 }
 
 
@@ -676,19 +379,6 @@ function getCurDate() {
 	return curDate;
 }
 
-// натискаємо кнопку порівняння
-let globalStat = document.querySelector('.global-stat');
-let globStatMod = document.getElementById("glob-statMod");
-globalStat.addEventListener('click', function(e) {
-	globStatModeClose();
-	createGlobStat();
-});
-
-globStatMod.addEventListener('click', globStatModeClose );
-
-function globStatModeClose() {
-	globStatMod.classList.toggle("close");
-}
 
 /*function getDayOfWeek(date) {
 	let days = ["Нд","Пн","Вт","Ср","Чт","Пт","Сб"];
@@ -700,48 +390,8 @@ getDayOfWeek(20.06);*/
 
 function createGlobStat() {
 	console.log("-- Функція createGlobStat --");
-	let table = document.createElement('table');
-	console.log(globStatMod.childNodes[1] );
 	
-	if (globStatMod.childNodes[1] != undefined ) {
-		globStatMod.childNodes[1].remove();
-	}
-	table.remove();
-	globStatMod.appendChild(table);
-	let td = document.createElement('td');
-	table.appendChild(td);
-	let th = document.createElement('th');
-	td.appendChild(th);
-	th.innerHTML = "назва";
-	
-
-	for (key in countData) {
-		let tr = document.createElement('tr');
-		td.appendChild(tr); 
-		tr.innerHTML = countData[key].name;
-	}
-	
-
-	
-	for (key in bigCountData) {
-		let td = document.createElement('td');
-		table.appendChild(td);
-		let tr = document.createElement('tr');
-			td.appendChild(tr);
-			tr.innerHTML = bigCountData[key].date;
-
-		//console.log(bigCountData[key]);
-		//console.log(bigCountData[key].date);
-		let curCount = bigCountData[key].count;
-		
-		for (let ind in curCount) {
-		  let tr = document.createElement('tr');
-		  td.appendChild(tr);
-		  tr.innerHTML = curCount[ind];
-		  //console.log("ind - " + ind + " curCount[ind] - " +curCount[ind]);
-		}	
-	}	
 }
 
-let fromPhpToJs = document.getElementById('my-block');
-console.log(fromPhpToJs.textContent);
+
+

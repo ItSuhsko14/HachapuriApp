@@ -15,30 +15,95 @@
 
 	<div class="wrapper-button">
 		<div class="restart button">restart</div>
-		<div class="global-stat button">порівняння</div>
+		<div class="global-stat button">інгридієнти</div>
 		<div class="statistic button">статистика</div>
 		<div class="zakupka button">закупка</div>
 	</div>
 	<div class="wrapper-button">
-		<div class="nav-button button" id="prev-page">назад</div>
+		<div class="nav-button button" id="save">зберегти</div>
 		<div class="cur-page button"></div>
 		<div class="nav-button button" id="next-page">вперед</div>
 	</div>
 </div>
 
-<div id="glob-statMod" class="close">
+<div id="glob-statMod" class="close zakupka">
+	<div class="zakupka-header">
+		<div class="h1-div">Використані продукти</div>
+		<input type="button" class="zakupka-button" id="ingridients-calculate" value="calculate">
+		<input type="button" class="zakupka-button" id="ingridients-close" value="close">
+	</div>
+	<table>
+		<tr>
+			<td>Інгридієнти</td>
+			<td>Вчора</td>
+			<td>Прихід</td>
+			<td>Використано</td>
+			<td>Залишок</td>
+			<td>Різниця</td>
+		</tr>
+		<tr>
+			<td>Свинина</td>
+			<td><input id="svin-yest" type="number"></td>
+			<td><input id="svin-add" type="number"></td>
+			<td><span class="svinDiv"></span></td>
+			<td><input id="svin-tod" type="number"></td>
+			<td><span id="svin-sub"></span></td>
+		</tr>
+		<tr>
+			<td>Телятина</td>
+			<td><input type="number"></td>
+			<td><input type="number"></td>
+			<td><span class="telyatDiv"></span></td>
+			<td><input type="number"></td>
+			<td><span id="telyat-sub"></span></td>
+		</tr>
+		<tr>
+			<td>Фарш</td>
+			<td><input type="number"></td>
+			<td><input type="number"></td>
+			<td><span class="farshDiv"></span></td>
+			<td><input type="number"></td>
+			<td><span id="fursh-sub"></span></td>
+		</tr>
+		<tr>
+			<td>Сир</td>
+			<td><input type="number"></td>
+			<td><input type="number"></td>
+			<td><span class="sirDiv"></span></td>
+			<td><input type="number"></td>
+			<td><span id="sir-sub"></span></td>
+		</tr>
+		<tr>
+			<td>Філе</td>
+			<td><input type="number"></td>
+			<td><input type="number"></td>
+			<td><span class="fyleDiv"></span></td>
+			<td><input type="number"></td>
+			<td><span id="fyle-sub"></span></td>
+		</tr>
+		<tr>
+			<td>Тісто</td>
+			<td><input type="number"></td>
+			<td><input type="number"></td>
+			<td><span class="tistoDiv"></span></td>
+			<td><input type="number"></td>
+			<td><span id="tisto-sub"></span></td>
+		</tr>
+	</table>
+	
 
 </div>
 
 <div id="statMod" class="close">
-	<div class="drigStat   no-click">asdfasdfДріжджова випічка:    <span></span> </div>
+	<div class="zakupka-header">
+		<div class="h1-div">Статистика</div>
+	</div>
+	<div class="drigStat   no-click">Дріжджова випічка:    <span></span> </div>
 	<div class="listStat   no-click">Листкова випічка:     <span></span> </div>
 	<div class="totalStat  no-click">Всього випічки:      <span></span> </div>
 	<div class="drigValue  no-click">Вартість дріжджової: <span></span> </div>
 	<div class="listValue  no-click">Вартість листкової:  <span></span> </div>
-	<div class="totalValue no-click">Вasdfартість всього:    <span></span> </div>
-	<div class="totalSir no-click">Використано сиру сьогодні:    <span></span> </div>
-
+	<div class="totalValue no-click">Вартість всього:    <span></span> </div>
 </div>
 
 
@@ -47,7 +112,6 @@
 	<div class="zakupka-header">
 		<div class="h1-div">Закупка</div>
 		<input type="button" value="копіювати" class="zakupka-button" id="copy">
-		<input type="button" value="редагувати" class="zakupka-button" id="redact">
 		<input type="button" class="zakupka-button" id="zakupka-close" value="close">
 	</div>
 
@@ -55,7 +119,9 @@
 </div>
 	<script type="text/javascript" src="script.js"></script>
 
+	<script type="text/javascript" src="ingridients.js"></script>
 	<script type="text/javascript" src="zakupka.js"></script>
+	<script type="text/javascript" src="save.js"></script>
 
 </body>
 </html>
