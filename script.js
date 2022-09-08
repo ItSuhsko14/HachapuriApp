@@ -65,7 +65,7 @@ let countData = {
 		"price": 3.5,
 	},
 	"shoco": {
-		"name": "Абрикос",
+		"name": "Шоколад",
 		"number": 8,
 		"type": 2,
 		"price": 3.5,
@@ -91,7 +91,7 @@ let countData = {
 	"adjar": {
 		"name": "Аджар.",
 		"number": 1,
-		"type": 2,
+		"type": 1,
 		"price": 3.5,
 	},
 	};

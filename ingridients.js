@@ -92,11 +92,22 @@ let farsh;
 let fyle;
 let tisto;
 
+
+function howMuchTisto() {
+	console.log("-- How much tisto");
+	let sum = 0;
+	for (el in countData) {
+		if (countData[el].type == 2) {
+		sum += count[el]*1/8;
+		}
+	}
+	return sum;
+};
+
 function usedIngredients() {
 	console.log("-- Функція розрахунку інгридієнтів");
 	const dataIngrigients = count;
 	for (key in countIngridients) {
-		console.log(key);
 		let name = countIngridients[key].container;
 		let result = dataIngrigients[name] * countIngridients[key].mass;
 		countIngridients[key].value = Math.round(result*1000)/1000;
@@ -110,7 +121,7 @@ function usedIngredients() {
 	telyat = countIngridients["telyatDjirg"].value + countIngridients["telyatSumahi"].value;
 	farsh = countIngridients["farshFarsh"].value;
 	fyle = countIngridients["fylePetuchinia"].value;
-	tisto = 1
+	tisto = howMuchTisto();
 	innerIngridients();
 	
 	};
@@ -158,12 +169,50 @@ function calculateSub() {
 	let sub = svinTod - (svinYest + svinAdd - svin);
 	sub = Math.round(sub*100)/100;
 	svinSub.innerHTML = sub;
-	console.log(typeof svinYest);
-	console.log(svinAdd);
-	console.log(svin);
-	console.log(svinTod);
-}
+	
 
+	let telyatSub = document.getElementById("telyat-sub");
+	let telyatYest = +document.getElementById("telyat-yest").value;
+	let telyatTod = +document.getElementById('telyat-tod').value;
+	let telyatAdd = +document.getElementById('telyat-add').value;
+	let subTelyat = telyatTod - (telyatYest + telyatAdd - telyat);
+	sub = Math.round(subTelyat*100)/100;
+	telyatSub.innerHTML = sub;
+
+	let farshSub = document.getElementById("farsh-sub");
+	let farshYest = +document.getElementById("farsh-yest").value;
+	let farshTod = +document.getElementById('farsh-tod').value;
+	let farshAdd = +document.getElementById('farsh-add').value;
+	let subFarsh = farshTod - (farshYest + farshAdd - farsh);
+	console.log(subFarsh);
+	sub = Math.round(subFarsh*100)/100;
+	farshSub.innerHTML = sub;
+	
+	let sirSub = document.getElementById("sir-sub");
+	let sirYest = +document.getElementById("sir-yest").value;
+	let sirTod = +document.getElementById('sir-tod').value;
+	let sirAdd = +document.getElementById('sir-add').value;
+	let subSir = sirTod - (sirYest + sirAdd - sir);
+	sub = Math.round(subSir*100)/100;
+	sirSub.innerHTML = sub;
+
+	let fyleSub = document.getElementById("fyle-sub");
+	let fyleYest = +document.getElementById("fyle-yest").value;
+	let fyleTod = +document.getElementById('fyle-tod').value;
+	let fyleAdd = +document.getElementById('fyle-add').value;
+	let subFyle = fyleTod - (fyleYest + fyleAdd - fyle);
+	sub = Math.round(subFyle*100)/100;
+	fyleSub.innerHTML = sub;
+
+	let tistoSub = document.getElementById("tisto-sub");
+	let tistoYest = +document.getElementById("tisto-yest").value;
+	let tistoTod = +document.getElementById('tisto-tod').value;
+	let tistoAdd = +document.getElementById('tisto-add').value;
+	let subTisto = tistoTod - (tistoYest + tistoAdd - tisto);
+	sub = Math.round(subTisto*100)/100;
+	tistoSub.innerHTML = sub;
+
+}
 //кнопка закрити
 let ingridientsClose = document.getElementById("ingridients-close");
 ingridientsClose.addEventListener('click', function(e) {
