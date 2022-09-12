@@ -198,11 +198,12 @@ copy.addEventListener('click', function(e) {
 	let list = document.querySelector(".list");
 	let copyStr = "";
 	let i = 0;
-	console.log(list);
 		for (child of list.children) {
 
-			if (child.id === "counter") {
+			if (child.id === "counter" && child.children[1].children[1].value != 0 ) {
+				console.log(child.children[1].children[1]);
 				console.log(zakupkaList[i].unit);
+				console.log(child.children[1].children[1].value != 0 );
 				copyStr = copyStr + child.children[0].innerText + " ";
 				copyStr = copyStr + child.children[1].children[1].value + zakupkaList[i].unit+"\n";
 			} else if (child.children[1].children[0].checked) {

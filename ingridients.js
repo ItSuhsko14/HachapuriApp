@@ -101,7 +101,12 @@ function howMuchTisto() {
 		sum += count[el]*1/8;
 		}
 	}
-	return sum;
+	
+	let drib = sum - Math.trunc(sum);
+	
+	drib = drib*100/12.5;
+	sum = Math.round(sum);
+	return sum + " " + drib +"/8";
 };
 
 function usedIngredients() {
@@ -112,15 +117,18 @@ function usedIngredients() {
 		let result = dataIngrigients[name] * countIngridients[key].mass;
 		countIngridients[key].value = Math.round(result*1000)/1000;
 		let output = Math.round(countIngridients[key].value*1000)/1000;
-		
 	};
 														
-						
 	sir = countIngridients["sirHachapuri"].value + countIngridients["sirFarsh"].value + countIngridients["sirSir"].value + countIngridients["sirMyaso"].value + countIngridients["sirPetuchinia"].value + countIngridients["sirAdjar"].value;
+	sir = Math.round(sir*1000)/1000;
 	svin = countIngridients["svinGemr"].value + countIngridients["svinKubd"].value + countIngridients["svinMyaso"].value;
+	svin = Math.round(svin*1000)/1000;
 	telyat = countIngridients["telyatDjirg"].value + countIngridients["telyatSumahi"].value;
+	telyat = Math.round(telyat*1000)/1000;
 	farsh = countIngridients["farshFarsh"].value;
+	farsh = Math.round(farsh*1000)/1000;
 	fyle = countIngridients["fylePetuchinia"].value;
+	fyle = Math.round(fyle*1000)/1000;
 	tisto = howMuchTisto();
 	innerIngridients();
 	

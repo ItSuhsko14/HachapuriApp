@@ -21,7 +21,7 @@
 	</div>
 	<div class="wrapper-button">
 		<div class="nav-button button" id="save">зберегти</div>
-		<div class="cur-page button"></div>
+		<div class="zalishki-button button">Залишки</div>
 		<div class="nav-button button" id="next-page">вперед</div>
 	</div>
 </div>
@@ -32,7 +32,7 @@
 		<input type="button" class="zakupka-button" id="ingridients-calculate" value="calculate">
 		<input type="button" class="zakupka-button" id="ingridients-close" value="close">
 	</div>
-	<table>
+	<table class="ing-table">
 		<tr>
 			<td>Інгридієнти</td>
 			<td>Вчора</td>
@@ -43,50 +43,50 @@
 		</tr>
 		<tr>
 			<td>Свинина</td>
-			<td><input id="svin-yest" type="number"></td>
-			<td><input id="svin-add" type="number"></td>
+			<td><input id="svin-yest" class="ing-input" type="number"></td>
+			<td><input id="svin-add" class="ing-input" type="number"></td>
 			<td><span class="svinDiv"></span></td>
-			<td><input id="svin-tod" type="number"></td>
+			<td><input id="svin-tod" class="ing-input" type="number"></td>
 			<td><span id="svin-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Телятина</td>
-			<td><input id="telyat-yest" type="number"></td>
-			<td><input id="telyat-add" type="number"></td>
+			<td><input  class="ing-input" id="telyat-yest" type="number"></td>
+			<td><input id="telyat-add" class="ing-input" type="number"></td>
 			<td><span class="telyatDiv"></span></td>
-			<td><input id="telyat-tod" type="number"></td>
+			<td><input id="telyat-tod" class="ing-input" type="number"></td>
 			<td><span id="telyat-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Фарш</td>
-			<td><input id="farsh-yest" type="number"></td>
-			<td><input id="farsh-add" type="number"></td>
+			<td><input id="farsh-yest"  class="ing-input" type="number"></td>
+			<td><input id="farsh-add" class="ing-input" type="number"></td>
 			<td><span class="farshDiv"></span></td>
-			<td><input id="farsh-tod" type="number"></td>
+			<td><input id="farsh-tod" class="ing-input" type="number"></td>
 			<td><span id="farsh-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Сир</td>
-			<td><input id="sir-yest" type="number"></td>
-			<td><input id="sir-add" type="number"></td>
+			<td><input id="sir-yest"  class="ing-input" type="number"></td>
+			<td><input id="sir-add" class="ing-input" type="number"></td>
 			<td><span class="sirDiv"></span></td>
-			<td><input id="sir-tod" type="number"></td>
+			<td><input id="sir-tod" class="ing-input" type="number"></td>
 			<td><span id="sir-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Філе</td>
-			<td><input id="fyle-yest" type="number"></td>
-			<td><input id="fyle-add" type="number"></td>
+			<td><input id="fyle-yest"  class="ing-input" type="number"></td>
+			<td><input id="fyle-add" class="ing-input" type="number"></td>
 			<td><span class="fyleDiv"></span></td>
-			<td><input id="fyle-tod" type="number"></td>
+			<td><input id="fyle-tod" class="ing-input" type="number"></td>
 			<td><span id="fyle-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Тісто</td>
-			<td><input id="tisto-yest" type="number"></td>
-			<td><input id="tisto-add" type="number"></td>
+			<td><input id="tisto-yest"  class="ing-input" type="number"></td>
+			<td><input id="tisto-add"  class="ing-input" type="number"></td>
 			<td><span class="tistoDiv"></span></td>
-			<td><input id="tisto-tod" type="number"></td>
+			<td><input id="tisto-tod"  class="ing-input" type="number"></td>
 			<td><span id="tisto-sub"></span></td>
 		</tr>
 	</table>
@@ -117,7 +117,11 @@
 </div>
 
 <div id="zalishki" class="zalishki close">
-	<div class="zakupka-header">Закупка</div>
+	<div class="zakupka-header">
+		<div class="h1-div">Залишки</div>
+		<input type="button" class="zakupka-button" id="zalishki-close" value="close">
+
+	</div>
 	<div class="wrapper-vipichka"></div>
 	
 </div>
@@ -125,7 +129,7 @@
 
 	<script type="text/javascript" src="ingridients.js"></script>
 	<script type="text/javascript" src="zakupka.js"></script>
-	<script type="text/javascript" src="save.js"></script>
+	<script type="text/javascript" src="zalishki.js"></script>
 
 </body>
 </html>
