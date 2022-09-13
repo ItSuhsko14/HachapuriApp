@@ -58,6 +58,7 @@ body {
 	padding: 2%;
 	font-size: 3vh;
 	z-index: 9999;
+	overflow: auto;
 }
 
 #glob-statMod.close {
@@ -87,8 +88,8 @@ body {
 	display: block;
 	top: 5%;
 	left: 5%;
-	width: 80%;
-	height: 80%;
+	width: 90%;
+	height: 90%;
 	background: #D2D2D2;
 	padding: 5%;
 	font-size: 3vh;
@@ -321,6 +322,16 @@ td {
 
 .ing-input {
 	width: 100%;
+	padding: 0;
+}
+
+.tod {
+	width: 70%;
+	
+}
+
+.ing-count {
+	width: 20%;
 }
 
 .ing-table td {

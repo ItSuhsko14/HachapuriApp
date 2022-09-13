@@ -98,7 +98,7 @@ function fromUsualToDecimal (str) { // перевожу спеціальний �
 	console.log(str);
 	str = String(str);
 	console.log(str);
-	let parce = str.split("-");
+	let parce = str.split(".");
 	let result;
 	console.log(parce[1]);
 	if (parce[1] != undefined ) {
@@ -114,19 +114,12 @@ function fromUsualToDecimal (str) { // перевожу спеціальний �
 
 function tistoTransform(sum) { //повертає десятковий дріб у вигляді кількості цілих і восьмих частин
 	console.log(" -- function tistoTransform ");
-	console.log(sum);
+	
 	let sumTrunc = Math.trunc(sum);
-	console.log("sumTrunc");
-	console.log(sumTrunc);
 	let drib = sum - sumTrunc;
-	console.log("drib");
-	console.log(drib);
 	drib = Math.trunc( drib*100/12.5 );
-	console.log("drib");
-	console.log(drib);
 	sum = Math.floor(sum);
 	sum = sum + " " + drib +"/8";
-	console.log(sum);
 	return sum;
 };
 
@@ -136,10 +129,9 @@ function howMuchTisto() { // повертає кількість листков�
 	for (el in countData) {
 		if (countData[el].type == 2) {
 		sum += count[el]*1/8;
-		console.log(sum);
+		
 		}
 	}
-	console.log(sum);
 	return sum;
 };
 
@@ -315,5 +307,37 @@ function includes(array, value) {
   // Change code above this line
 }
 
+function countFromPrompt() {
+	console.log(" -- function countRemainder --");
+	let sum = 0;
+	for (let i = 0; i <= 100; i++) {
+		let a = +prompt("Введи кількість або натисни cancel", " ");
+		if (a == 0) {
+			return sum;
+			break;
+		} else {
+			sum += a;
+		}
+	}
+	console.log(sum);
+	return sum;
+}
 
-  console.log(includes([1,2,3,4,5],3) );
+let sirTod = document.getElementById("sir-tod");
+let sirCount = document.getElementById("sir-count");
+console.log(sirCount);
+console.log(sirTod);
+
+
+
+let buttonsCountRemainder = document.getElementsByClassName("input-div");
+console.log(buttonsCountRemainder);
+
+for (button of buttonsCountRemainder) {
+	console.log(button.children[1]);
+	button.children[1].onclick = function(event) {
+		console.log(event.target.previousElementSibling);	
+		a = countFromPrompt();
+		event.target.previousElementSibling.value = a;
+	}
+}
