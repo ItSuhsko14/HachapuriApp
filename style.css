@@ -52,8 +52,8 @@ body {
 	display: block;
 	top: 5%;
 	left: 5%;
-	width: 85%;
-	height: 85%;
+	width: 90%;
+	height: 90%;
 	background: #D2D2D2;
 	padding: 2%;
 	font-size: 3vh;
@@ -104,8 +104,8 @@ body {
 	display: block;
 	top: 5%;
 	left: 5%;
-	width: 80%;
-	height: 80%;
+	width: 90%;
+	height: 90%;
 	background: #D2D2D2;
 	padding: 5%;
 	font-size: 3vh;
@@ -320,5 +320,9 @@ td {
 }
 
 .ing-input {
-	width: 10vw;
+	width: 100%;
+}
+
+.ing-table td {
+	width: 16%;
 }

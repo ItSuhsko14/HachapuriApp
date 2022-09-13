@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Хачапурі</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
 	
 </head>
 <body>
@@ -32,7 +34,7 @@
 		<input type="button" class="zakupka-button" id="ingridients-calculate" value="calculate">
 		<input type="button" class="zakupka-button" id="ingridients-close" value="close">
 	</div>
-	<table class="ing-table">
+	<table class="ing-table table">
 		<tr>
 			<td>Інгридієнти</td>
 			<td>Вчора</td>
@@ -83,10 +85,10 @@
 		</tr>
 		<tr>
 			<td>Тісто</td>
-			<td><input id="tisto-yest"  class="ing-input" type="number"></td>
-			<td><input id="tisto-add"  class="ing-input" type="number"></td>
+			<td><input id="tisto-yest"  class="ing-input" type="text"></td>
+			<td><input id="tisto-add"  class="ing-input" type="text"></td>
 			<td><span class="tistoDiv"></span></td>
-			<td><input id="tisto-tod"  class="ing-input" type="number"></td>
+			<td><input id="tisto-tod"  class="ing-input" type="text"></td>
 			<td><span id="tisto-sub"></span></td>
 		</tr>
 	</table>
@@ -130,6 +132,6 @@
 	<script type="text/javascript" src="ingridients.js"></script>
 	<script type="text/javascript" src="zakupka.js"></script>
 	<script type="text/javascript" src="zalishki.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

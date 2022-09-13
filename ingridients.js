@@ -93,20 +93,54 @@ let fyle;
 let tisto;
 
 
-function howMuchTisto() {
+function fromUsualToDecimal (str) { // перевожу спеціальний запис формата цілі-частини в десятковий дріб, тобто 2-2 = 2.25
+	console.log(" -- function fromUsualToDecimal");
+	console.log(str);
+	str = String(str);
+	console.log(str);
+	let parce = str.split("-");
+	let result;
+	console.log(parce[1]);
+	if (parce[1] != undefined ) {
+		console.log( Number(parce[1])/8 );
+		result = Number(parce[0]) + Number(parce[1]/8);
+		} else {
+			result = Number(str);
+		}
+	console.log(result);
+	return result;
+}
+
+
+function tistoTransform(sum) { //повертає десятковий дріб у вигляді кількості цілих і восьмих частин
+	console.log(" -- function tistoTransform ");
+	console.log(sum);
+	let sumTrunc = Math.trunc(sum);
+	console.log("sumTrunc");
+	console.log(sumTrunc);
+	let drib = sum - sumTrunc;
+	console.log("drib");
+	console.log(drib);
+	drib = Math.trunc( drib*100/12.5 );
+	console.log("drib");
+	console.log(drib);
+	sum = Math.floor(sum);
+	sum = sum + " " + drib +"/8";
+	console.log(sum);
+	return sum;
+};
+
+function howMuchTisto() { // повертає кількість листкового тіста
 	console.log("-- How much tisto");
 	let sum = 0;
 	for (el in countData) {
 		if (countData[el].type == 2) {
 		sum += count[el]*1/8;
+		console.log(sum);
 		}
 	}
-	
-	let drib = sum - Math.trunc(sum);
-	
-	drib = drib*100/12.5;
-	sum = Math.round(sum);
-	return sum + " " + drib +"/8";
+	console.log(sum);
+	return sum;
 };
 
 function usedIngredients() {
@@ -148,7 +182,7 @@ function innerIngridients() {
 	farshDiv.innerHTML = farsh + " кг";
 	fyleDiv.innerHTML = fyle + " шт.";
 	sirDiv.innerHTML = sir + " кг";
-	tistoDiv.innerHTML = tisto + " шт.";
+	tistoDiv.innerHTML = tistoTransform(tisto) + " шт.";
 }
 
 
@@ -213,12 +247,27 @@ function calculateSub() {
 	fyleSub.innerHTML = sub;
 
 	let tistoSub = document.getElementById("tisto-sub");
-	let tistoYest = +document.getElementById("tisto-yest").value;
-	let tistoTod = +document.getElementById('tisto-tod').value;
-	let tistoAdd = +document.getElementById('tisto-add').value;
+	let tistoYest = document.getElementById("tisto-yest").value;
+	console.log(tistoYest);
+	tistoYest = fromUsualToDecimal(tistoYest);
+	console.log("tistoYest");
+	console.log(typeof tistoYest);
+	let tistoTod = document.getElementById('tisto-tod').value;
+	tistoTod = fromUsualToDecimal(tistoTod);
+	console.log("tistoTod");
+	console.log(typeof tistoTod);
+	let tistoAdd = document.getElementById('tisto-add').value;
+	tistoAdd = fromUsualToDecimal(tistoAdd);
+	console.log("tistoAdd");
+	console.log(typeof tistoAdd);
+	console.log(tistoAdd);
+	
 	let subTisto = tistoTod - (tistoYest + tistoAdd - tisto);
+	console.log(`subTisto ${subTisto} = tistoTod ${tistoTod} - (tistoYest ${tistoYest} + tistoAdd ${tistoAdd} - tisto ${tisto}) `);
+	console.log(subTisto);
 	sub = Math.round(subTisto*100)/100;
-	tistoSub.innerHTML = sub;
+	console.log(sub);
+	tistoSub.innerHTML = tistoTransform(sub);
 
 }
 //кнопка закрити
@@ -235,22 +284,7 @@ function globStatModeClose() {
 	globStatMod.classList.toggle("close");
 }
 
-let countSir = document.getElementById('count-sir');
-let masSir = 10 - 10;
 
-function countingSir() {
-	console.log(" -- Функція countSir");
-	while (true) {
-		let countMass = + prompt("Вага сира");
-		if (!countMass) break;
-		masSir = masSir + countMass;
-		console.log(masSir);
-	}
-	console.log("Кінцева вага сира: " + masSir);
-	alert("Кінцева вага сира: " + masSir);
-};
-
-countSir.addEventListener('click', countingSir );
 
 function filterArray(numbers, value) {
    // Change code below this line
