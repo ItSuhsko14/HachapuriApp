@@ -191,13 +191,14 @@ globalStat.addEventListener('click', function(e) {
 //кнопка рахувати
 let calculate = document.getElementById("ingridients-calculate");
 calculate.addEventListener('click', function(e) {
-	console.log(calculate);
 	calculateSub();
 });
 
 function calculateSub() {
+	console.log(" -- function calculateSub -- ");
 	let svinSub = document.getElementById("svin-sub");
 	let svinYest = +document.getElementById("svin-yest").value;
+	console.log(svinYest);
 	let svinTod = +document.getElementById('svin-tod').value;
 	let svinAdd = +document.getElementById('svin-add').value;
 	let sub = svinTod - (svinYest + svinAdd - svin);
@@ -260,8 +261,8 @@ function calculateSub() {
 	sub = Math.round(subTisto*100)/100;
 	console.log(sub);
 	tistoSub.innerHTML = tistoTransform(sub);
-
 }
+
 //кнопка закрити
 let ingridientsClose = document.getElementById("ingridients-close");
 ingridientsClose.addEventListener('click', function(e) {

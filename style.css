@@ -323,10 +323,11 @@ td {
 .ing-input {
 	width: 100%;
 	padding: 0;
+	display: inline-block;
 }
 
 .tod {
-	width: 70%;
+	width: 60%;
 	
 }
 
