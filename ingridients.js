@@ -114,14 +114,32 @@ function fromUsualToDecimal (str) { // перевожу спеціальний �
 
 function tistoTransform(sum) { //повертає десятковий дріб у вигляді кількості цілих і восьмих частин
 	console.log(" -- function tistoTransform ");
-	
+	console.log(sum);
 	let sumTrunc = Math.trunc(sum);
+	console.log(sumTrunc);
 	let drib = sum - sumTrunc;
-	drib = Math.trunc( drib*100/12.5 );
-	sum = Math.floor(sum);
-	sum = sum + " " + drib +"/8";
-	return sum;
+	console.log(drib);
+	drib = drib*100/12.5;
+	console.log(drib);
+	//let result = Math.floor(sum);
+	//console.log(result);
+	let result = sumTrunc;
+	result = result + " " + drib +"/8";
+	console.log(result);
+	return result;
 };
+
+
+//-1.125
+//-1
+//-1.125 - (-1) = -0.125
+//drib = -1/8
+//sumTrunc = -1
+
+
+
+		
+
 
 function howMuchTisto() { // повертає кількість листкового тіста
 	console.log("-- How much tisto");
@@ -258,7 +276,7 @@ function calculateSub() {
 	let subTisto = tistoTod - (tistoYest + tistoAdd - tisto);
 	console.log(`subTisto ${subTisto} = tistoTod ${tistoTod} - (tistoYest ${tistoYest} + tistoAdd ${tistoAdd} - tisto ${tisto}) `);
 	console.log(subTisto);
-	sub = Math.round(subTisto*100)/100;
+	sub = Math.round(subTisto*1000)/1000;
 	console.log(sub);
 	tistoSub.innerHTML = tistoTransform(sub);
 }
