@@ -1,23 +1,23 @@
-let data = [];
 let save = document.getElementById("save");
-let cell = {
-	date: 0,
-	count: {},
-};
+
 let curDate = getCurDate();
+
 save.addEventListener('click', function(event) {
 	console.log("-- Натиснуто кнопку Save");
-	
-	if ( data[data.length - 1].date !== undefined ) {
-		console.log("data[data.length - 1] == curDate");
-		data[data.length - 1].count = count;
-	} else {
-		console.log("data[data.length - 1] !== curDate");
-		data.push(cell);
-		data[data.length - 1].date = getCurDate();
-		data[data.length - 1].count = count;
-	};
-	
+	let data = count;
+	data['date'] = curDate;
+	data = JSON.stringify(data);
 	console.log(data);
 
+	let phpText = document.getElementById('text_for_php');
+	let phpButton = document.getElementById('save_for_php');
+
+	phpText.value = data;
+
+	phpButton.click();
 })
+
+document.write('<?php echo "Hello World"; ?>');
+
+
+

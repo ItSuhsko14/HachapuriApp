@@ -104,6 +104,7 @@ function downloadCount() {
 		console.log("count існує в localStorage");
 		count = JSON.parse( localStorage.getItem("data") );
 		console.log("count завантажено з LocalStorage");
+		console.log(count);
 	} else {
 		console.log("count не існує в localStorage");
 		count = createCountNull();
@@ -372,11 +373,26 @@ function clickButton() {
 // отримуємо поточну дату
 function getCurDate() {
 	let date = new Date();
-	let day = date.getDate();
-	let mounth = date.getMonth();
+	console.log(date);
+	let day;
+	let month;
+	console.log(date.getDate());
+	if (date.getDate() < 10) {
+		day = "0" + date.getDate();
+
+	} else {
+		day = date.getDate();
+	};
+	if (date.getMonth() < 9) {
+		month = "0" + (date.getMonth() +1);
+	} else {
+		month = date.getMonth();
+	};
 	let year = date.getFullYear();
-	let curDate = day + "." + mounth + "." + year;
+	let curDate = year + "-" + month + "-" + day;
+	console.log(curDate);
 	return curDate;
+
 }
 
 
@@ -392,6 +408,5 @@ function createGlobStat() {
 	console.log("-- Функція createGlobStat --");
 	
 }
-
 
 

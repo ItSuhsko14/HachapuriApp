@@ -327,7 +327,7 @@ td {
 }
 
 .tod {
-	width: 60%;
+	width: 70%;
 	
 }
 
@@ -335,6 +335,8 @@ td {
 	width: 20%;
 }
 
-.ing-table td {
-	width: 16%;
+
+
+.close {
+	display: none;
 }

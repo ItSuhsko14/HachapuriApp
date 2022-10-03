@@ -16,67 +16,67 @@ console.log(hachapuri);
 let countIngridients = {
 	farshFarsh: {
 		container: "farsh",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	fylePetuchinia: {
 		container: "petuchinia",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	sirPetuchinia: {
 		container: "petuchinia",
-		mass: 0.035,
+		mass: 35,
 		value: 0
 	},
 	svinKubd: {
 		container: "kubdari",
-		mass: 0.14,
+		mass: 140,
 		value: 0
 	},
 	svinMyaso: {
 		container: "miaso",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	svinGemr: {
 		container: "gemrieli",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	telyatDjirg: {
 		container: "djigruli",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	telyatSumahi: {
 		container: "sumahi",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	sirHachapuri: {
 		container: "hachapuri",
-		mass: 0.13,
+		mass: 130,
 		value: 0
 	},
 	sirMyaso: {
 		container: "miaso",
-		mass: 0.06,
+		mass: 60,
 		value: 0
 	},
 	sirSir: {
 		container: "sir",
-		mass: 0.1,
+		mass: 100,
 		value: 0
 	},
 	sirFarsh: {
 		container: "farsh",
-		mass: 0.06,
+		mass: 60,
 		value: 0
 	},
 	sirAdjar: {
 		container: "adjar",
-		mass: 0.6,
+		mass: 600,
 		value: 0
 	},
 };
@@ -187,11 +187,11 @@ function innerIngridients() {
 	let fyleDiv = document.querySelector(".fyleDiv");
 	let tistoDiv = document.querySelector(".tistoDiv");
 	
-	svinDiv.innerHTML = svin + " кг";
-	telyatDiv.innerHTML = telyat + " кг";
-	farshDiv.innerHTML = farsh + " кг";
+	svinDiv.innerHTML = svin + " г";
+	telyatDiv.innerHTML = telyat + " г";
+	farshDiv.innerHTML = farsh + " г";
 	fyleDiv.innerHTML = fyle + " шт.";
-	sirDiv.innerHTML = sir + " кг";
+	sirDiv.innerHTML = sir + " г";
 	tistoDiv.innerHTML = tistoTransform(tisto) + " шт.";
 }
 

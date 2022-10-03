@@ -13,16 +13,15 @@
 
 
 <div class="wrapper">
-
-<?php 
-	require 'configDB.php';
-	echo 'підключаємо базу даних'
-?>
+	<div class="for_php">	
+		<?php 
+			require 'configDB.php';
+		?>
+	</div>
 
 <script type="text/javascript">
 	var dataBase = <?php echo json_encode($results); ?>;
 </script>
-
 
 	<div class="wrapper-vipichka"> </div>	
 
@@ -37,6 +36,14 @@
 		<div class="nav-button button" id="save">зберегти</div>
 		<div class="zalishki-button button">Залишки</div>
 		<div class="nav-button button" id="next-page">вперед</div>
+		<div class="close">
+			<form action="save.php" method="get"> 
+				<input type="text" id="text_for_php" name="fromjs" value="">
+				<input type="submit" id="save_for_php" value="передати">
+			</form>
+			
+		</div>
+
 	</div>
 </div>
 
@@ -48,12 +55,12 @@
 	</div>
 	<table class="ing-table table">
 		<tr>
-			<td>Інгридієнти</td>
-			<td>Вчора</td>
-			<td>Прихід</td>
-			<td>Використано</td>
-			<td>Залишок</td>
-			<td>Різниця</td>
+			<td style="width: 16%">Інгридієнти</td>
+			<td style="width: 16%">Вчора</td>
+			<td style="width: 16%">Прихід</td>
+			<td style="width: 16%">Використано</td>
+			<td style="width: 22%">Залишок</td>
+			<td style="width: 10%">Різниця</td>
 		</tr>
 		<tr>
 			<td>Свинина</td>
@@ -66,7 +73,7 @@
 					<input class="ing-count" id="svin-count" type="button" value="+">
 				</div>
 			</td>
-			<td><span id="svin-sub"></span></td>
+			<td class="sub"><span id="svin-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Телятина</td>
@@ -79,7 +86,7 @@
 					<input class="ing-count" id="telyat-count" type="button" value="+">
 				</div>
 			</td>
-			<td><span id="telyat-sub"></span></td>
+			<td class="sub"><span id="telyat-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Фарш</td>
@@ -92,7 +99,7 @@
 					<input class="ing-count" id="farsh-count" type="button" value="+">
 				</div>
 			</td>
-			<td><span id="farsh-sub"></span></td>
+			<td class="sub"><span id="farsh-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Сир</td>
@@ -105,7 +112,7 @@
 					<input class="ing-count" id="sir-count" type="button" value="+">
 				</div>
 			</td>
-			<td><span id="sir-sub"></span></td>
+			<td class="sub"><span id="sir-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Філе</td>
@@ -113,7 +120,7 @@
 			<td><input id="fyle-add" class="ing-input" type="number"></td>
 			<td><span class="fyleDiv"></span></td>
 			<td><input id="fyle-tod" class="ing-input" type="number"></td>
-			<td><span id="fyle-sub"></span></td>
+			<td class="sub"><span id="fyle-sub"></span></td>
 		</tr>
 		<tr>
 			<td>Тісто</td>
@@ -121,7 +128,7 @@
 			<td><input id="tisto-add"  class="ing-input" type="number"></td>
 			<td><span class="tistoDiv"></span></td>
 			<td><input id="tisto-tod"  class="ing-input" type="number"></td>
-			<td><span id="tisto-sub"></span></td>
+			<td class="sub"><span id="tisto-sub"></span></td>
 		</tr>
 	</table>
 	
@@ -164,6 +171,7 @@
 	<script type="text/javascript" src="ingridients.js"></script>
 	<script type="text/javascript" src="zakupka.js"></script>
 	<script type="text/javascript" src="zalishki.js"></script>
+	<script type="text/javascript" src="save.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
